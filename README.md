@@ -283,3 +283,11 @@
   - For setting up the SMBIOS info, just use `MacPro7,1`:
     - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#platforminfo-greater-than-generic
     - https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo
+
+# Installing macOS
+
+- Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html
+- Notes:
+  - Please do not remove `BOOTx64.efi` from `EFI/BOOT`. Otherwise, OpenCore cannot load boot entries.
+  - Press `Space` to show `USB Drive (External)` [(see Rufus)](https://github.com/loc12345pro/Hackintosh-Alder-Lake#making-installer-in-windows).
+  - Because the `Internal SATA Controller` is set to `Intel VMD`, macOS cannot see 2 NVME drives or 2 2TB HDD drives, except for 480GB SSD drive (which is connected to `External SATA Controller`).
