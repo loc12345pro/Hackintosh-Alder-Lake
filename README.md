@@ -71,3 +71,72 @@
   ![disk-drives](https://user-images.githubusercontent.com/12621111/229268825-fe8a0867-7b97-495e-b5e6-d3b21acccfcb.png)
 
 </details>
+
+# BIOS Settings
+
+- Notes:
+  - The guide is for MSI BIOS version E7D42IMS.1A0.
+  - The BIOS should be updated via [MS Center](https://www.msi.com/Landing/MSI-Center).
+  - After updating BIOS, all settings will be set to default.
+  - There is search icon on the right corner of MSI BIOS.
+- Enable the following:
+  - Intel VT-d Tech
+  - Intel Virtualization Tech (VT-x)
+  - Re-Size Bar Support
+  - Hyper-Threading
+  - XHCI Hand-off
+- Disable the following:
+  - Fast Boot 
+  - MSI Fast Boot
+  - Secure Boot
+  - Thunderbolt
+  - CFG Lock
+- XMP: Profile 2
+  - The games will crash when setting XMP to Profile 1.
+- Trusted Model Platform: Enabled.
+  - This is for Windows 11.
+- BIOS CSM/UEFI Mode: UEFI
+- Internal SATA Mode: Intel VMD
+  - Intel VMD is for 2 2TB hard disks which are used to store games.
+  - When setting the mode to Intel VMD, macOS will not recognize any drives in Internal SATA Controller.
+- External SATA Mode: AHCI
+- Integrated Graphics Shared Memory: 64M (default)
+- NX Bit (Execute Disable Bit): Yes (read-only)
+
+<details>
+  <summary>Where to set?</summary>
+
+  ## VT-D/VT-X/CFG Lock
+  ![VT-D_and_VT-X](https://user-images.githubusercontent.com/12621111/229274669-934df35c-7d56-4c1f-8217-fd384c8d5bfb.png)
+
+  ## Re-Size Bar support
+  ![RESIZE-BAR-SUPPORT](https://user-images.githubusercontent.com/12621111/229274784-bbe0e7e9-03cd-4cf8-aa4d-30293026413b.png)
+
+  ## Hyper-Threading
+  ![HYPER-THREADING](https://user-images.githubusercontent.com/12621111/229274809-f87b2355-d2e4-408e-b90b-0d778708f4cd.png)
+
+  ## XHCI Hand-off
+  ![XHCI-HANDOFF](https://user-images.githubusercontent.com/12621111/229274845-d80d78a8-ad34-4d00-847b-7e7389b8911d.png)
+
+  ## Fast Boot/MSI Fast Boot
+  ![Fastboot_and_MSI-Fastboot](https://user-images.githubusercontent.com/12621111/229274610-455c2d87-c8ea-4727-8a57-eb11079e9234.png)
+
+  ## Secure Boot
+  ![Secure-Boot](https://user-images.githubusercontent.com/12621111/229274904-129b6ab6-ff82-42b6-98a4-2d3e6f49cadc.png)
+
+  ## Thunderbolt
+  ![THUNDERBOLT](https://user-images.githubusercontent.com/12621111/229274935-f980b3e8-149b-498e-aaa0-18aa71d1b5ba.png)
+
+  ## BIOS CSM/UEFI Mode
+  ![BIOS_UEFI](https://user-images.githubusercontent.com/12621111/229274984-57cb15c5-e0ef-4098-af9c-5cbed3b65b76.png)
+
+  ## Internal/External SATA Controller
+  ![SATA-MODE](https://user-images.githubusercontent.com/12621111/229275017-f1a37561-845a-4d02-bdb4-a58d189f4027.png)
+
+  ## Integrated Graphics Shared Memory
+  ![DVMT-PREALLOCATED](https://user-images.githubusercontent.com/12621111/229275046-0ff0ff39-93e2-41c8-a9c6-c5e72d29b45b.png)
+
+  ## NX bit (Execute Disable Bit) (read-only)
+  ![NX-BIT](https://user-images.githubusercontent.com/12621111/229275111-11179ce6-d9d3-4ba0-a24c-f95b2d8d1618.png)
+  
+</details>
