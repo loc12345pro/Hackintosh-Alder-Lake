@@ -33,3 +33,41 @@
     - I've always wanted to setup RAID.
   - USB Keyboard: [Logitech K120](https://www.amazon.com/Logitech-920-002478-K120-USB-Keyboard/dp/B003ELVLKU)
   - USB Mouse: [Logitech M100R](https://www.amazon.com/Logitech-M100R-Wired-Mouse-Black/dp/B0080W1X6U)
+
+<details>
+  <summary>Finding hardware</summary>
+  
+  ## CPU Model
+  ![cpu-model](https://user-images.githubusercontent.com/12621111/229268715-0bad97f7-2f80-4b85-aa95-194a9f167fb0.png)
+
+  ## GPU Model
+  ![gpu-model](https://user-images.githubusercontent.com/12621111/229268771-59fc056f-1a37-429d-bf75-46c1e0cef894.png)
+
+  ## Chipset Model
+  ![chipset-model](https://user-images.githubusercontent.com/12621111/229268816-7c6f934a-8556-4892-b956-a894f0ad6b80.png)
+
+  ## Audio Codec
+  ```console
+  locpham@Loc-Ubuntu-PC:~/Work/01_hackintosh$ head /proc/asound/card0/codec#0
+  Codec: Realtek ALCS1200A
+  Address: 0
+  AFG Function Id: 0x1 (unsol 1)
+  Vendor Id: 0x10ec0b00
+  Subsystem Id: 0x14627d42
+  Revision Id: 0x100001
+  No Modem Function Group found
+  Default PCM:
+      rates [0x5f0]: 32000 44100 48000 88200 96000 192000
+      bits [0xe]: 16 20 24
+  ```
+
+  # Ethernet Controller
+  ```console
+  locpham@Loc-Ubuntu-PC:~/Work/01_hackintosh$ lspci | grep -i Ethernet
+  0000:05:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
+  ```
+
+  ## Disk Drives
+  ![disk-drives](https://user-images.githubusercontent.com/12621111/229268825-fe8a0867-7b97-495e-b5e6-d3b21acccfcb.png)
+
+</details>
