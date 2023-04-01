@@ -284,6 +284,9 @@
   - For setting up the SMBIOS info, just use `MacPro7,1`:
     - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#platforminfo-greater-than-generic
     - https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo
+    - Note:
+      - When you boot Windows via OpenCore, `MSI Center` will not allow you to use `Mystic Light` or update BIOS/Drivers because `Model Name` is set to `MacPro7,1` instead of `MAG B660M MORTAR DDR4`.
+      - When it happens, just press F11 continuously until you see `Boot Options`. Then, choose `Windows Boot Manager` to boot Windows 11 directly without OpenCore.
 
 # Installing macOS
 
