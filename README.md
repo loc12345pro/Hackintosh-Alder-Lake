@@ -121,6 +121,7 @@
 - External SATA Mode: AHCI
 - Integrated Graphics Shared Memory: 64M (default)
 - NX Bit (Execute Disable Bit): Yes (read-only)
+- Follow this video to setup RAID0 for 2 2TB HDD drives: https://youtu.be/INjFklUQ7lE
 
 <details>
   <summary>Where to set?</summary>
@@ -159,3 +160,79 @@
   ![NX-BIT](https://user-images.githubusercontent.com/12621111/229275111-11179ce6-d9d3-4ba0-a24c-f95b2d8d1618.png)
   
 </details>
+
+# Test results
+
+- All USB Type-A ports (front panel and rear panel) work.
+- USB Type-C port (rear panel) is disabled because I do not need it.
+- Ethernet 2.5G port works.
+- CPU works, however the performance is not good because [it's missing CPUFriend](https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#opencore-config.plist-configuration).
+- GPU works.
+- Audio output port (rear panel) works. However, I did not test audio in/out port at front-panel.
+- Audio input port (rear panel) works.
+
+# Making installer in Windows
+- Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/installer-guide/windows-install.html#downloading-macos
+- Notes:
+  - Remember to set Python3 environment variables in the Python3 installer.
+  - Before downloading macOS recovery files, please note that the command is **python, not python3**:
+    ```console
+    python macrecovery.py -b Mac-4B682C642B45593E -m 00000000000000000 download
+    ```
+  - Create USB installer with Rufus 3.21:  
+    ![rufus-3 21](https://user-images.githubusercontent.com/12621111/229291489-2236676e-9632-4d8b-82de-29d630985f4b.png)
+  - Please use OpenCore debug version. Then, we can change it to release version after fixing all issues.
+
+# Adding firmware drivers
+
+- Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/ktext.html#firmware-drivers
+- HfsPlus.efi **(required)**: 
+  - Needed for seeing HFS volumes(ie. macOS Installers and Recovery partitions/images).
+  - Do not mix other HFS drivers, such as: OpenHfsPlus.efi
+- OpenRuntime.efi **(required)**: Replacement for [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), used as an extension for OpenCore to help with patching boot.efi for NVRAM fixes and better memory management.
+- ResetNvramEntry.efi (optional): Required to reset the system's NVRAM
+
+# Adding tools
+
+- OpenShell.efi **(required)**: Recommended for easier debugging
+
+# Adding kexts
+
+- Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/ktext.html#kexts
+- Lilu **(required)**: A kext to patch many processes, required for AppleALC, WhateverGreen, VirtualSMC and many other kexts. Without Lilu, they will not work.
+- VirtualSMC **(required)**: Emulates the SMC chip found on real macs, without this macOS will not boot.
+- SMCProcessor.kext **(required)**: Used for monitoring Intel CPU temperature.
+- RadeonSensor.kext (optional): Required to read the GPU temperature and requires Lilu.
+- SMCRadeonGPU.kext (optional): Can be used optionally to export GPU temperature to VirtualSMC for monitoring tools to read and requires VirtualSMC.
+- SMCSuperIO.kext **(required)**: Used for monitoring fan speed.
+- WhateverGreen.kext **(required)**: Used for graphics patching, DRM fixes, board ID checks, framebuffer fixes, etc; all GPUs benefit from this kext.
+- AppleALC.kext **(required)**: Used for AppleHDA patching, allowing support for the majority of on-board sound controllers.
+- LucyRTL8125Ethernet **(required)**: For Realtek's 2.5Gb Ethernet.
+- RestrictEvents.kext **(required)**: Patch various functions of macOS, see [the README](https://github.com/acidanthera/RestrictEvents#boot-arguments) (opens new window)for more info.
+- USBToolBox.kext and UTBMap.kext **(required)**:
+  - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/alternatives/usb-mapping-on-windows
+  - https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html
+
+# ACPI
+
+## Fixing Embedded Controller (SSDT-EC/USBX)
+
+- Follow steps here: https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html
+
+## Fixing Power Management (SSDT-PLUG)
+
+- Use `SSDT-PLUG-ALT.dsl` instead of `SSDT-PLUG.dsl` because we are using Alder Lake CPU:
+  - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#acpi-greater-than-add
+  - https://github.com/tarbaII/OpenCore-Install-Guide/blob/alderlake/config.plist/alder-lake.md#add
+
+## Fixing System Clocks (SSDT-AWAC/RTC0)
+
+- Follow steps here: https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html
+
+## Fixing SMBus support (SSDT-SBUS-MCHC)
+
+- Follow steps here: https://dortania.github.io/Getting-Started-With-ACPI/Universal/smbus.html
+
+## Disabling iGPU
+
+- Because macOS does not support integrated GPU `Intel® UHD Graphics 730`, we must disable it by following this guide: https://dortania.github.io/OpenCore-Install-Guide/extras/spoof.html#disabling-gpu
