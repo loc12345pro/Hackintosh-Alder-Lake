@@ -122,6 +122,7 @@
   - Fast Boot 
   - MSI Fast Boot
   - Secure Boot
+    - Note: Windows Security may complain if Secure Boot is turned off.
   - Thunderbolt
   - CFG Lock
 - XMP: Profile 2
