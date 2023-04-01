@@ -18,7 +18,7 @@
     - Chipset: B660M.
     - Audio codec: Realtek ALCS1200A.
     - Network controller: RTL8125 2.5GbE Controller.
-  - RAM: [Kingston Fury Beast Black 8GB 3200MHz DDR4](https://www.amazon.com/Kingston-Desktop-Memory-Single-KF432C16BB/dp/B097K5J1SB)
+  - RAM: 4x [Kingston Fury Beast Black 8GB 3200MHz DDR4](https://www.amazon.com/Kingston-Desktop-Memory-Single-KF432C16BB/dp/B097K5J1SB)
     - No RGB lighting.
     - Affordable price and compatible to the CPU.
   - SSD: [Kingston A400 2.5-Inch SATA 3 480GB](https://www.amazon.com/Kingston-480GB-Solid-SA400S37-480G/dp/B01N0TQPQB)
@@ -33,6 +33,21 @@
     - I've always wanted to setup RAID.
   - USB Keyboard: [Logitech K120](https://www.amazon.com/Logitech-920-002478-K120-USB-Keyboard/dp/B003ELVLKU)
   - USB Mouse: [Logitech M100R](https://www.amazon.com/Logitech-M100R-Wired-Mouse-Black/dp/B0080W1X6U)
+
+<details>
+  <summary>Where to buy in southern Vietnam?</summary>
+
+  - PSU 750W: https://kccshop.vn/nguon-may-tinh-asus-tuf-gaming-750b-750w-bronze/
+  - Case GT301: https://kccshop.vn/vo-case-asus-tuf-gaming-gt301-mid-tower-mau-den-led-argb/
+  - CPU: https://tinhocngoisao.com/products/cpu-intel-core-i5-12400-box-chinh-hang-2-50-up-to-4-40ghz
+  - Mainboard: https://tinhocngoisao.com/products/mainboard-msi-b660m-mag-mortar-ddr4
+  - RAM: https://memoryzone.com.vn/ram-pc-kingston-fury-beast-black-8gb-3200mhz-ddr4-kf432c16bb-8 (x4)
+  - SSD: https://memoryzone.com.vn/ssd-kingston-a400-sata-3-480gb-sa400s37-480g
+  - GPU: https://kccshop.vn/vga-sapphire-nitro-radeon-rx-6600-xt-gaming-oc-8gb/
+  - NVME: https://hoanghapc.vn/ssd-sabrent-rocket-500gb-m.2-nvme (x2)
+  - HDD: https://memoryzone.com.vn/hdd-wd-blue-2tb-3-5-inch-sata-iii-256mb-cache-7200rpm-wd20ezbx (x2) 
+  
+</details>
 
 <details>
   <summary>Finding hardware</summary>
