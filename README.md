@@ -87,6 +87,10 @@
 
 </details>
 
+# PC Wiring
+
+![pc-wiring](https://user-images.githubusercontent.com/12621111/229279699-1e5a9796-53c1-4489-9c55-b75ed8690528.jpg)
+
 # BIOS Settings
 
 - Notes:
