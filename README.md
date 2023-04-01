@@ -1,3 +1,10 @@
+# Versions
+
+- macOS: Ventura (13.1)
+- Windows: 11 Pro (22H2)
+- Ubuntu: 22.04 LTS
+- OpenCore: 0.9.0
+
 # PC components
 
   - PSU: [ASUS TUF GAMING 750W Bronze](https://www.amazon.com/ASUS-TUF-Axial-tech-Technology-Certification/dp/B08SBY73C2)
@@ -236,3 +243,20 @@
 ## Disabling iGPU
 
 - Because macOS does not support integrated GPU `Intel® UHD Graphics 730`, we must disable it by following this guide: https://dortania.github.io/OpenCore-Install-Guide/extras/spoof.html#disabling-gpu
+
+# config.plist setup
+
+- For final result, please refer here: https://github.com/loc12345pro/config.plist
+- Follow steps in:
+  - Common: https://dortania.github.io/OpenCore-Install-Guide/config.plist/#creating-your-config-plist
+  - For Commet Lake (also for Alder Lake): https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#starting-point
+- Notes:
+  - Just delete `PciRoot(0x0)/Pci(0x1b,0x0)` which is already exists in `Sample.plist`.
+  - Do not add `PciRoot(0x0)/Pci(0x2,0x0)` because the macOS does not support iGPU UHD 730.
+  - Just ignore parts related to Ethernet controller `Intel I225 NIC`.
+  - We do not need `PciRoot(0x0)/Pci(0x1b,0x0)` to install macOS. Let's fix it later.
+  - Set `Kernel->Emulate` as described in: https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#kernel-greater-than-emulate
+  - For GPU support, please add options: `agdpmod=pikera unfairgva=1` to `boot-args`
+  - For setting up the SMBIOS info, just use `MacPro7,1`:
+    - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#platforminfo-greater-than-generic
+    - https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo
