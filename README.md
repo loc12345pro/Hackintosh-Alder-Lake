@@ -111,6 +111,13 @@
   - Re-Size Bar Support
   - Hyper-Threading
   - XHCI Hand-off
+  - Wake on LAN:
+    - This setting may interfere with [Sleep in macOS](https://dortania.github.io/OpenCore-Post-Install/universal/sleep.html).
+    - Disable it if you do not want to remotely power on the computer.
+    - In my case, I really want this feature because I do not want to use the power button.
+  - Trusted Platform Module:
+    - This is required for Windows 11.
+    - OpenCore suggests to turn it off. However, with it enabled, macOS still boots just fine. 
 - Disable the following:
   - Fast Boot 
   - MSI Fast Boot
@@ -177,6 +184,18 @@
 - GPU works.
 - Audio output port (rear panel) works. However, I did not test audio in/out port at front-panel.
 - Audio input port (rear panel) works.
+- Sleep does not work. Root-cause may be related to [power management](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html).
+- [LauncherOption](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html) does not work as expected. It creates a boot entry in BIOS, but does not allow me to delete BOOTx64.efi
+
+# Helper tools
+
+- [Rufus](https://rufus.ie/en/): Create USB installer.
+- [iasl](https://acpica.org/downloads/binary-tools): Dump DSDT, compile .dsl files, decompile .aml files.
+- [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS): Generate SMBIOS info.
+- [ProperTree](https://github.com/corpnewt/ProperTree): Edit .plist file.
+- [SSDTTime](https://github.com/corpnewt/SSDTTime): Create SSDT automatically.
+- [USBToolBox](https://github.com/USBToolBox/tool): For USB mapping.
+- [RadeonGadget (macOS app)](https://github.com/aluveitie/RadeonSensor/tree/master/RadeonGadget): Show GPU's temperator (for post-install setup).
 
 # Making installer in Windows
 - Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/installer-guide/windows-install.html#downloading-macos
@@ -199,7 +218,7 @@
 - OpenRuntime.efi **(required)**: Replacement for [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), used as an extension for OpenCore to help with patching boot.efi for NVRAM fixes and better memory management.
 - ResetNvramEntry.efi (optional): Required to reset the system's NVRAM
 
-# Adding tools
+# Adding OpenCore tools
 
 - OpenShell.efi **(required)**: Recommended for easier debugging
 
@@ -251,10 +270,14 @@
   - Common: https://dortania.github.io/OpenCore-Install-Guide/config.plist/#creating-your-config-plist
   - For Commet Lake (also for Alder Lake): https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#starting-point
 - Notes:
+  - **Always remember to update config.plist before adding/removing .aml, .efi, or .kext files**.
+  - Do not add DSDT.aml to config.plist because it's already in your firmware.
+  - Do not mix .aml files with .dsl files.
   - Just delete `PciRoot(0x0)/Pci(0x1b,0x0)` which is already exists in `Sample.plist`.
   - Do not add `PciRoot(0x0)/Pci(0x2,0x0)` because the macOS does not support iGPU UHD 730.
-  - Just ignore parts related to Ethernet controller `Intel I225 NIC`.
+  - Just ignore parts related to Ethernet controller `Intel I225 NIC`. The mainboard does not have it.
   - We do not need `PciRoot(0x0)/Pci(0x1b,0x0)` to install macOS. Let's fix it later.
+  - In `Kernel->Quirks`, just set `DisableIoMapper` to `Yes` to keep `VT-D` enabled. Without `VT-D`, virtual machines may be affected.
   - Set `Kernel->Emulate` as described in: https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#kernel-greater-than-emulate
   - For GPU support, please add options: `agdpmod=pikera unfairgva=1` to `boot-args`
   - For setting up the SMBIOS info, just use `MacPro7,1`:
