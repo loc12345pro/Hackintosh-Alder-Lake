@@ -200,6 +200,7 @@
 - [RadeonGadget (macOS app)](https://github.com/aluveitie/RadeonSensor/tree/master/RadeonGadget): Show GPU's temperator (for post-install setup).
 - [IORegistryExplorer (macOS app)](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip): For checking if Audio or Power Management is setup correctly?
 - [MountEFI (macOS tool)](https://github.com/corpnewt/MountEFI): Mount EFI Paritition (in Hackintosh drive).
+- [gfxutil (macOS tool)](https://github.com/acidanthera/gfxutil/releases): Find route for PCI, Audio...
 
 # Making installer in Windows
 - Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/installer-guide/windows-install.html#downloading-macos
