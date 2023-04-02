@@ -194,6 +194,7 @@
 - [iasl](https://acpica.org/downloads/binary-tools): Dump DSDT, compile .dsl files, decompile .aml files.
 - [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS): Generate SMBIOS info.
 - [ProperTree](https://github.com/corpnewt/ProperTree): Edit .plist file.
+  - ProperTree supports macOS, too. If it opens a black window on Ventura, please follow steps here: https://github.com/corpnewt/ProperTree#faq to fix.
 - [SSDTTime](https://github.com/corpnewt/SSDTTime): Create SSDT automatically.
 - [USBToolBox](https://github.com/USBToolBox/tool): For USB mapping.
 - [RadeonGadget (macOS app)](https://github.com/aluveitie/RadeonSensor/tree/master/RadeonGadget): Show GPU's temperator (for post-install setup).
@@ -297,3 +298,20 @@
   - Please do not remove `BOOTx64.efi` from `EFI/BOOT`. Otherwise, OpenCore cannot load boot entries.
   - Press `Space` to show `USB Drive (External)` [(see Rufus)](https://github.com/loc12345pro/Hackintosh-Alder-Lake#making-installer-in-windows).
   - Because the `Internal SATA Controller` is set to `Intel VMD`, macOS cannot see 2 NVME drives or 2 2TB HDD drives, except for 480GB SSD drive (which is connected to `External SATA Controller`).
+  - If stuck at `[EB|#LOG:EXITBS:START]`, make sure to set [Booter->Quirks->SetupVirtualMap](https://github.com/loc12345pro/config.plist/commit/93472875171c660fc3f5822fd1a281b081703260) (https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/extended/kernel-issues.html#stuck-on-eb-log-exitbs-start) in config.plist.
+
+# Post-Install
+
+## Fixing slide values
+
+- Just follow steps here: https://dortania.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html#so-what-is-kaslr
+- Refer here: https://github.com/loc12345pro/config.plist/tree/main/fixing-kaslr-slide-values for how to calculate slide value.
+
+## Security
+
+- The file https://github.com/loc12345pro/config.plist does not contain [FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security/filevault.html), [Vault](https://dortania.github.io/OpenCore-Post-Install/universal/security/vault.html), [OpenCore Password Setup](https://dortania.github.io/OpenCore-Post-Install/universal/security/password.html), or [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
+
+## Using LauncherOption
+
+- Follow the steps here: https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html
+- The file https://github.com/loc12345pro/config.plist added support for it. However, it does not work as expected because the BIOS does not show boot entry of OpenCore when `BOOTx64.efi` is deleted.
