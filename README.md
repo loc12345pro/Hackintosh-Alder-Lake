@@ -40,6 +40,9 @@
     - I've always wanted to setup RAID.
   - USB Keyboard: [Logitech K120](https://www.amazon.com/Logitech-920-002478-K120-USB-Keyboard/dp/B003ELVLKU)
   - USB Mouse: [Logitech M100R](https://www.amazon.com/Logitech-M100R-Wired-Mouse-Black/dp/B0080W1X6U)
+  - WiFi PCIe card: [Apple Broadcom BCM943602CDP – 802.11 a/b/g/n/ac with Bluetooth 4.2](https://www.osxwifi.com/product/pc-hackintosh-apple-broadcom-bcm943602cdp-802-11-a-b-g-n-ac-bluetooth-4-2-limited-edition/)
+    - Pricy: Around 116.65 USD (Custom fees included) to ship it to Vietnam.
+    - Despite the cost, it works out of the box: WiFi works, Airdrop works, send/receive file via Bluetooth OK!
 
 <details>
   <summary>Where to buy in southern Vietnam?</summary>
@@ -52,7 +55,8 @@
   - SSD: https://memoryzone.com.vn/ssd-kingston-a400-sata-3-480gb-sa400s37-480g
   - GPU: https://kccshop.vn/vga-sapphire-nitro-radeon-rx-6600-xt-gaming-oc-8gb/
   - NVME: https://hoanghapc.vn/ssd-sabrent-rocket-500gb-m.2-nvme (x2)
-  - HDD: https://memoryzone.com.vn/hdd-wd-blue-2tb-3-5-inch-sata-iii-256mb-cache-7200rpm-wd20ezbx (x2) 
+  - HDD: https://memoryzone.com.vn/hdd-wd-blue-2tb-3-5-inch-sata-iii-256mb-cache-7200rpm-wd20ezbx (x2)
+  - WiFi PCIe card: Ask https://fado.vn/ to buy [Apple Broadcom BCM943602CDP – 802.11 a/b/g/n/ac with Bluetooth 4.2](https://www.osxwifi.com/product/pc-hackintosh-apple-broadcom-bcm943602cdp-802-11-a-b-g-n-ac-bluetooth-4-2-limited-edition/) for you.
   
 </details>
 
@@ -316,3 +320,35 @@
 
 - Follow the steps here: https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html
 - The file https://github.com/loc12345pro/config.plist added support for it. However, it does not work as expected because the BIOS does not show boot entry of OpenCore when `BOOTx64.efi` is deleted.
+
+## WiFi
+
+![20240106_Broadcom-BCM943602CDP](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/b94e84f5-bb72-492d-b1d0-42cef1ac07db) ![20240106_Broadcom-BCM943602CDP-2](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/13608a6e-c3ee-4485-8322-dd9afa2e6201)
+
+
+### Hardware setup
+
+- Use USB 2.0 headers to connect the Bluetooth wiring!
+- Compatible to PCI-E x4, PCI-E x8, PCI-E x16 slots.
+- The bracket is compatible to ATX PC case.
+
+### Software setup
+
+- MacOS: Auto!
+- Ubuntu: Auto!
+- Arch Linux:
+  - If your system uses [NetworkManager](https://wiki.archlinux.org/title/NetworkManager), follow steps in [2.1. nmcli examples](https://wiki.archlinux.org/title/NetworkManager#nmcli_examples).
+  - If there is no network manager in your system, use [wpa_suppliant](https://wiki.archlinux.org/title/wpa_supplicant) to for configuration and connection.
+- Windows 11:
+  - For Bluetooth: Use [6.1.6700.0 (04-10-2016).zip](https://github.com/loc12345pro/Hackintosh-Alder-Lake/files/13850078/6.1.6700.0.04-10-2016.zip). The driver is not signed. Use at your own risks!
+  - For Wifi: Use [PCIe Dongle (1.558.53.1 - 22.10.2017).zip](https://github.com/loc12345pro/Hackintosh-Alder-Lake/files/13850082/PCIe.Dongle.1.558.53.1.-.22.10.2017.zip). Again, the driver is not signed. Use at your own risks!
+
+<details>
+  <summary>How to manually add drivers on Windows 11?</summary>
+
+  - Open Device Manager.
+  - Click on Bluetooth or WiFi icon with warning sign. Then click Action > Add drivers.
+  - Browse to the location of extracted drivers (see above). Then, click Next and Finish!
+  - *Note:* The driver is not signed so Windows will raise warnings. If so, just ignore it!
+  
+</details>
