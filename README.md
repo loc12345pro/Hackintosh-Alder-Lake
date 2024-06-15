@@ -248,6 +248,133 @@
   - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/alternatives/usb-mapping-on-windows
   - https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html
 
+# USBMap
+
+- Download latest tool from [USBToolBox](https://github.com/USBToolBox/tool/releases) repository.
+- Follow the below instructions in [USBToolBox](https://github.com/USBToolBox/kext?tab=readme-ov-file#usage):
+  ```text
+  This is gonna be a very basic guide for now. A fully-fleshed guide will be released in the future.
+
+  Download the appropriate download for your OS.
+  Open and adjust settings if necessary.
+  Select Discover Ports and wait for the listing to populate.
+  Plug in a USB device into each port. Wait for the listing to show your USB device before unplugging it and plugging it into another port.
+  If on Windows, you only need to plug in 1 device to USB 3 ports (as companion detection should be working). If on macOS, you will have to plug in a USB 2 device and a USB 3 device into each USB 3 port.
+  For old computers with OHCI/UHCI and EHCI controllers, you will need to plug in a mouse/keyboard to map the USB 1.1 personalities, as most USB 2 devices will end on the USB 2 personality.
+  Once mapping is done, go to the Select Ports screen.
+  Select your ports and adjust port types as neccesary.
+  Press K to build the kext!
+  Add the resulting USB map to your EFI/OC/Kexts folder, and make sure to update your config.plist.
+  If building a map that uses the USBToolBox kext, make sure to grab the latest release of the kext too.
+  Make sure to remove UTBDefault.kext , if you have it.
+  Reboot and you should have your USB map working!
+  ```
+- Prepare one USB 2.0 device, such as: keyboard or mouse and one USB 3.0 device, such as: USB flash drive (Kingston DataTraveler 3.0).
+- In "D.  Discover Ports" mode, plug in and out USB 2.0 and 3.0 devices. Then, go to "S.  Select Ports and Build Kext" mode to select the ports and **confirm its type**.
+- Based on [the hardware as above](#pc-components), the selected port should be like this:
+  ```text
+  #######################################################
+  #            Select Ports and Build Kext              #
+  #######################################################
+  
+  Intel(R) USB 3.20 eXtensible Host Controller - 1.20 (Microsoft) | USB 3.0 (XHCI) | 12/25 ports
+  [ ]  1.  Port 1 | USB 2.0 | Type C - with switch (guessed) | Companion to 17
+  [#]  2.  Port 2 | USB 2.0 | Internal
+            - MYSTIC LIGHT - operating at USB 1.1
+  [#]  3.  Port 3 | USB 2.0 | Internal
+            - USB2.1 Hub - operating at USB 2.0
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+              - USB Keyboard - operating at USB 1.1
+  [ ]  4.  Port 4 | USB 2.0 | Type C - with switch (guessed) | Companion to 19
+  [#]  5.  Port 5 | USB 2.0 | Type A
+            - USB Keyboard - operating at USB 1.1
+            - DataTraveler 3.0 - operating at USB 2.0
+            - Dell MS116 USB Optical Mouse - operating at USB 1.1
+  [#]  6.  Port 6 | USB 2.0 | Type A
+            - USB Keyboard - operating at USB 1.1
+            - Dell MS116 USB Optical Mouse - operating at USB 1.1
+            - DataTraveler 3.0 - operating at USB 2.0
+  [#]  7.  Port 7 | USB 2.0 | Type A
+            - USB Keyboard - operating at USB 1.1
+            - DataTraveler 3.0 - operating at USB 2.0
+  [#]  8.  Port 8 | USB 2.0 | Type A
+            - USB Keyboard - operating at USB 1.1
+            - DataTraveler 3.0 - operating at USB 2.0
+            - Dell MS116 USB Optical Mouse - operating at USB 1.1
+  [#]  9.  Port 9 | USB 2.0 | Type A | Companion to 24
+            - Dell MS116 USB Optical Mouse - operating at USB 1.1
+  [#]  10. Port 10 | USB 2.0 | Type A | Companion to 25
+            - Dell MS116 USB Optical Mouse - operating at USB 1.1
+  [#]  11. Port 11 | USB 2.0 | Internal
+            - USB2.0 Hub - operating at USB 2.0
+              - Bluetooth USB Host Controller - operating at USB 1.1
+  [ ]  12. Port 12 | USB 2.0 | Internal (guessed)
+  [ ]  13. Port 13 | USB 2.0 | Internal (guessed)
+  [ ]  14. Port 14 | USB 2.0 | Internal (guessed)
+  [ ]  15. Port 15 | USB 2.0 | Type A (guessed)
+  [ ]  16. Port 16 | USB 2.0 | Type A (guessed)
+  [ ]  17. Port 17 | USB 3.0 | Type C - with switch (guessed) | Companion to 1
+  [#]  18. Port 18 | USB 3.0 | Internal
+            - USB3.2 Hub - operating at USB 3.1 Gen 2
+              - DataTraveler 3.0 - operating at USB 3.0
+  [ ]  19. Port 19 | USB 3.0 | Type C - with switch (guessed) | Companion to 4
+  [ ]  20. Port 20 | USB 3.0 | Internal (guessed)
+  [ ]  21. Port 21 | USB 3.0 | Internal (guessed)
+  [ ]  22. Port 22 | USB 3.0 | Internal (guessed)
+  [ ]  23. Port 23 | USB 3.0 | Internal (guessed)
+  [#]  24. Port 24 | USB 3.0 | Type A | Companion to 9
+            - DataTraveler 3.0 - operating at USB 3.0
+  [#]  25. Port 25 | USB 3.0 | Type A | Companion to 10
+            - DataTraveler 3.0 - operating at USB 3.0
+  ```
+- The meaning of each port is as below:
+  - Front case (see page 1 of document [User Manual - Case TUF Gaming GT301]( https://dlcdnets.asus.com/pub/ASUS/ODD/DC/GT301/E15889_TUF_Gaming_GT301_Series_UM_WEB.pdf): 
+    - USB 3.2 Gen1 Type-A ports (these ports are connected to JUSB3 port on [MAG B660M MORTAR WIFI DDR4 motherboard](https://download.msi.com/archive/mnu_exe/mb/MAGB660MMORTARWIFIDDR4_MAGB660MMORTARDDR4.pdf)):
+    ```text
+    [#]  24. Port 24 | USB 3.0 | USB 3 Type A (guessed) | Companion to 9
+              - DataTraveler 3.0 - operating at USB 3.0
+    [#]  25. Port 25 | USB 3.0 | USB 3 Type A (guessed) | Companion to 10
+              - DataTraveler 3.0 - operating at USB 3.0
+    ```
+    - USB 2.0 Type-A ports (companion ports of USB 3.2 Gen1 ports (above)):
+    ```text
+    [#]  9.  Port 9 | USB 2.0 | USB 3 Type A (guessed) | Companion to 24
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+    [#]  10. Port 10 | USB 2.0 | USB 3 Type A (guessed) | Companion to 25
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+    ```
+  - Back case (see "Rear I/O Panel" section of document [User Guide - MAG B660M MORTAR WIFI DDR4 motherboard](https://download.msi.com/archive/mnu_exe/mb/MAGB660MMORTARWIFIDDR4_MAGB660MMORTARDDR4.pdf)) :
+    - USB 2.0 Type-A port (4 black ports):
+    ```text
+    [#]  5.  Port 5 | USB 2.0 | Type A (guessed)
+              - USB Keyboard - operating at USB 1.1
+              - DataTraveler 3.0 - operating at USB 2.0
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+    [#]  6.  Port 6 | USB 2.0 | Type A (guessed)
+              - USB Keyboard - operating at USB 1.1
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+              - DataTraveler 3.0 - operating at USB 2.0
+    [#]  7.  Port 7 | USB 2.0 | Type A (guessed)
+              - USB Keyboard - operating at USB 1.1
+              - DataTraveler 3.0 - operating at USB 2.0
+    [#]  8.  Port 8 | USB 2.0 | Type A (guessed)
+              - USB Keyboard - operating at USB 1.1
+              - DataTraveler 3.0 - operating at USB 2.0
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+    ```
+    - USB 3.2 Gen2 Type-A ports (3 red ports):
+    ```text
+    [#]  18. Port 18 | USB 3.0 | Internal (guessed)
+              - USB3.2 Hub - operating at USB 3.1 Gen 2
+              - DataTraveler 3.0 - operating at USB 3.0
+    ```
+    - USB 2.0 Type-A ports (companion ports of USB 3.2 Gen2 Type-A ports (above)):
+    ```text
+    [#]  3.  Port 3 | USB 2.0 | Internal (guessed)
+              - USB2.1 Hub - operating at USB 2.0
+              - Dell MS116 USB Optical Mouse - operating at USB 1.1
+    ```
+
 # ACPI
 
 ## Fixing Embedded Controller (SSDT-EC/USBX)
@@ -324,7 +451,6 @@
 ## WiFi
 
 ![20240106_Broadcom-BCM943602CDP](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/b94e84f5-bb72-492d-b1d0-42cef1ac07db) ![20240106_Broadcom-BCM943602CDP-2](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/13608a6e-c3ee-4485-8322-dd9afa2e6201)
-
 
 ### Hardware setup
 
