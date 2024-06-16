@@ -67,6 +67,14 @@
 		<array>
 			<dict>
 				<key>All</key>
+				<true/>
+				<key>Enabled</key>
+				<true/>
+				<key>TableSignature</key>
+				<data>RE1BUg==</data>
+			</dict>
+			<dict>
+				<key>All</key>
 				<false/>
 				<key>Comment</key>
 				<string>Delete CpuPm</string>
