@@ -499,15 +499,15 @@
 		<key>Emulate</key>
 		<dict>
 			<key>Cpuid1Data</key>
-			<data></data>
+			<data>VQYKAAAAAAAAAAAAAAAAAA==</data>
 			<key>Cpuid1Mask</key>
-			<data></data>
+			<data>/////wAAAAAAAAAAAAAAAA==</data>
 			<key>DummyPowerManagement</key>
 			<false/>
 			<key>MaxKernel</key>
 			<string></string>
 			<key>MinKernel</key>
-			<string></string>
+			<string>19.0.0</string>
 		</dict>
 		<key>Force</key>
 		<array>
