@@ -187,7 +187,8 @@
 - Ethernet 2.5G port works.
 - CPU works, however the performance is not good because [it's missing CPUFriend](https://chriswayg.gitbook.io/opencore-visual-beginners-guide/advanced-topics/using-alder-lake#opencore-config.plist-configuration).
 - GPU works.
-- Audio output port (rear panel) works. However, I did not test audio in/out port at front-panel.
+- Audio output port (rear panel) works.
+- Audio output port (on TUF GT301 case) works.
 - Audio input port (rear panel) works.
 - Sleep does not work. Root-cause may be related to [power management](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html).
 - [LauncherOption](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html) does not work as expected. It creates a boot entry in BIOS, but does not allow me to delete BOOTx64.efi
