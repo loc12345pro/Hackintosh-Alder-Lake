@@ -435,6 +435,13 @@
 
 # Post-Install
 
+## Audio
+
+- Just plug in audio speaker to `Line In/Side Speaker Out` port instead of `Line Out/Front Speaker Out` port. Then, set `alcid=2` to [NVRAM->Add->7C436110-AB2A-4BBB-A880-FE41995C9F82->boot-args](https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#testing-your-layout) for testing:
+  ![20230623_audio-ports-configuration](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/19e3faec-51ee-4c35-a48f-45c06a1ad79c)
+- With this setup and configuration, the audio speaker (in `Line In/Side Speaker Out` port), audio HDMI, and audio headphone (in audio port of `GT301 case`) will all work!
+- If you plug the audio speaker to `Line Out/Front Speaker Out` port, all alcid suggested in [Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs), such as: 1, 2, 3, 7, 11, 49, 50, 51, 52, and 69 will not work! I means that the audio speaker will have no sound, and only either the HDMI audio or the audio headphone will work.
+
 ## Fixing slide values
 
 - Just follow steps here: https://dortania.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html#so-what-is-kaslr
