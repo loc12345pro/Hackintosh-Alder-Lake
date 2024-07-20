@@ -566,7 +566,14 @@
 
 | Platform (benchmark tool) | Date | Result |
 | -------- | -------- | ------- |
+| Windows 11 Pro (Cinebench 2024.1.0) | 21/07/2024 | GPU (System Requirements): 5197 pts. |
 | macOS Ventura 13.6.7 (Cinebench 2024.1.0) | 21/07/2024 | GPU (System Requirements): 4288 pts. |
+
+<details>
+  <summary>Cinebench 2024.1.0 on Windows 11 Pro (21/07/2024)</summary>
+
+  ![20240721_gpu-benchmark-windows-11](https://github.com/user-attachments/assets/7521582f-198e-4e58-8622-a44e176a3352)
+</details>
 
 <details>
   <summary>Cinebench 2024.1.0 on macOS Ventura 13.6.7 (20/07/2024)</summary>
