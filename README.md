@@ -561,3 +561,15 @@
 
   ![20240720_cpu-benchmark-on-macos_before-cpufriend](https://github.com/user-attachments/assets/5f47dac0-9c77-4aaf-8e77-eee6d1bf61a8)
 </details>
+
+## GPU
+
+| Platform (benchmark tool) | Date | Result |
+| -------- | -------- | ------- |
+| macOS Ventura 13.6.7 (Cinebench 2024.1.0) | 21/07/2024 | GPU (System Requirements): 4288 pts. |
+
+<details>
+  <summary>Cinebench 2024.1.0 on macOS Ventura 13.6.7 (20/07/2024)</summary>
+
+  ![20240721_gpu-benchmark-on-macos_before-cpufriend](https://github.com/user-attachments/assets/ee26394f-5980-46ff-a3a5-f179e9d790db)
+</details>
