@@ -548,9 +548,16 @@
 | Platform (benchmark tool) | Date | Result |
 | -------- | -------- | ------- |
 | Windows 11 Pro (Cinebench 2024.1.0) | 20/07/2024 | CPU (Multi Core): 686 pts.<br>CPU (Single Core): 100 pts. |
+| macOS Ventura 13.6.7 (Cinebench 2024.1.0) | 20/07/2024 | CPU (Multi Core): 549 pts.<br>CPU (Single Core): 65 pts. |
 
 <details>
   <summary>Cinebench 2024.1.0 on Windows 11 Pro (20/07/2024)</summary>
 
   ![20230720_cpu-benchmark-windows-11](https://github.com/user-attachments/assets/f15fb4da-4975-44b4-bf4c-1dc087520a05)
+</details>
+
+<details>
+  <summary>Cinebench 2024.1.0 on macOS Ventura 13.6.7 (20/07/2024)</summary>
+
+  ![20240720_cpu-benchmark-on-macos_before-cpufriend](https://github.com/user-attachments/assets/5f47dac0-9c77-4aaf-8e77-eee6d1bf61a8)
 </details>
