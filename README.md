@@ -540,3 +540,17 @@
 - CPU and GPU benchmark tool:
   - Geekbench 6: https://www.geekbench.com (download installer).
   - Cinebench: `brew install cinebench` (https://formulae.brew.sh/cask/cinebench).
+
+# Benchmark results
+
+## CPU
+
+| Platform (benchmark tool) | Date | Result |
+| -------- | -------- | ------- |
+| Windows 11 Pro (Cinebench 2024.1.0) | 20/07/2024 | CPU (Multi Core): 686 pts.<br>CPU (Single Core): 100 pts. |
+
+<details>
+  <summary>Cinebench 2024.1.0 on Windows 11 Pro (20/07/2024)</summary>
+
+  ![20230720_cpu-benchmark-windows-11](https://github.com/user-attachments/assets/f15fb4da-4975-44b4-bf4c-1dc087520a05)
+</details>
