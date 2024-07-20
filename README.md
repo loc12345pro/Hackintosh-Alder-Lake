@@ -1,19 +1,20 @@
 # Versions
 
-- macOS: Ventura (13.1)
-- Windows: 11 Pro (22H2)
-- Ubuntu: 22.04 LTS
-- OpenCore: 0.9.0
+- macOS: Ventura (13.6.7).
+- Windows: 11 Pro (latest).
+- Ubuntu: 24.04 LTS.
+- OpenCore: 1.0.0.
 
 # PC components
 
   - PSU: [ASUS TUF GAMING 750W Bronze](https://www.amazon.com/ASUS-TUF-Axial-tech-Technology-Certification/dp/B08SBY73C2)
     - Good price.
     - Recommended by [PSU Cultist](https://cultists.network/140/psu-tier-list/).
-    - Able to handle the system.
+    - Able to handle the system (from programming to gaming).
   - Case: [TUF gaming GT301](https://dlcdnets.asus.com/pub/ASUS/ODD/DC/GT301/E15889_TUF_Gaming_GT301_Series_UM_WEB.pdf)
     - Good airflow.
     - Four pre-installed fans (120mm): 3 fans on the front and 1 fan on the back.
+    - Plenty of spaces for upgrading in the future.
   - CPU: [Intel® Core™ i5-12400 Processor](https://ark.intel.com/content/www/us/en/ark/products/134586/intel-core-i512400-processor-18m-cache-up-to-4-40-ghz.html)
     - 6 Performance-cores, no Efficient-cores -> No need optimize Alder Lake's heterogeneous core configuration.
     - Integrated GPU: Intel® UHD Graphics 730 -> Not supported by macOS -> Need to be switched off.
@@ -23,7 +24,7 @@
     - Good price.
     - Hackintosh-able mainboard.
     - Chipset: B660M.
-    - Audio codec: Realtek ALCS1200A.
+    - Audio codec: Realtek ALCS1200A (troublesome since there is no perfect ALCID -> not all audio output port work).
     - Network controller: RTL8125 2.5GbE Controller.
   - RAM: 4x [Kingston Fury Beast Black 8GB 3200MHz DDR4](https://www.amazon.com/Kingston-Desktop-Memory-Single-KF432C16BB/dp/B097K5J1SB)
     - No RGB lighting.
@@ -31,18 +32,31 @@
   - SSD: [Kingston A400 2.5-Inch SATA 3 480GB](https://www.amazon.com/Kingston-480GB-Solid-SA400S37-480G/dp/B01N0TQPQB)
     - Good price.
     - Drive model: KINGSTON SA400S37480G.
+    - For Ubuntu 24.04 LTS.
+  - SSD: [Apacer Zadak TWSS3 512GB Sata 2.5 (ZS512GTWSS3-1)](https://tinhocngoisao.com/products/o-cung-ssd-apacer-zadak-twss3-512gb-sata-2-5-zs512gtwss3-1)
+    - Cheap. Around 22 USD.
+    - For Arch Linux.
   - GPU: [NITRO+ AMD Radeon™ RX 6600 XT](https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6600-xt-8g-gddr6)
     - Good price.
     - Able to do 1080p gaming.
     - It is supported since macOS Monterey (12.1).
-  - NVME (for Windows 11 and Ubuntu 22.04 LTS): 2x [Sabrent Rocket 500GB M.2 NVMe PCIe Gen 4.0 x4](https://sabrent.com/products/sb-rocket-nvme4-500)
+  - NVME (for Windows 11 and the Hackintosh): 2x [Sabrent Rocket 500GB M.2 NVMe PCIe Gen 4.0 x4](https://sabrent.com/products/sb-rocket-nvme4-500)
+    - Recommended by OpenCore: https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/Storage.html.
   - HDD (for storing games on Windows 11) (RAID0): 2x [WD Blue 2TB 3.5 inch SATA III 256MB Cache 7200RPM](https://www.amazon.com/Western-Digital-Blue-Hard-Drive/dp/B08VH8R94B)
-    - I've always wanted to setup RAID.
+    - RAID0 setup. For tutorials, please see: [How to establish a striped volume (RAID 0) in Windows Server 2003](https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/establish-striped-volume-raid-0).
   - USB Keyboard: [Logitech K120](https://www.amazon.com/Logitech-920-002478-K120-USB-Keyboard/dp/B003ELVLKU)
   - USB Mouse: [Logitech M100R](https://www.amazon.com/Logitech-M100R-Wired-Mouse-Black/dp/B0080W1X6U)
   - WiFi PCIe card: [Apple Broadcom BCM943602CDP – 802.11 a/b/g/n/ac with Bluetooth 4.2](https://www.osxwifi.com/product/pc-hackintosh-apple-broadcom-bcm943602cdp-802-11-a-b-g-n-ac-bluetooth-4-2-limited-edition/)
     - Pricy: Around 116.65 USD (Custom fees included) to ship it to Vietnam.
     - Despite the cost, it works out of the box: WiFi works, Airdrop works, send/receive file via Bluetooth OK!
+    - **Note**: It's deprecated since macOS Sonoma removes Broadcom WiFi support. Now, we have 3 choices:
+      - Continue using macOS Ventura (until end of 2025) (this is my solution).
+      - Use Intel WiFi card when updating to macOS Sonoma or Sequoia.
+      - Use OCLP to bring back Broadcom WiFi support after updating to macOS Sonoma.  
+        However, I tried this but no luck and this method is troublesome since you have to disable SIP.
+      - References:
+        - [State of macOS 14 Sonoma on x86](https://www.reddit.com/r/hackintosh/comments/141wnjk/state_of_macos_14_sonoma_on_x86/)
+        - [How to Fix Broadcom WiFi on macOS Sonoma and Later](https://elitemacx86.com/threads/how-to-fix-broadcom-wifi-on-macos-sonoma-and-later.1415/)
 
 <details>
   <summary>Where to buy in southern Vietnam?</summary>
@@ -52,10 +66,11 @@
   - CPU: https://tinhocngoisao.com/products/cpu-intel-core-i5-12400-box-chinh-hang-2-50-up-to-4-40ghz
   - Mainboard: https://tinhocngoisao.com/products/mainboard-msi-b660m-mag-mortar-ddr4
   - RAM: https://memoryzone.com.vn/ram-pc-kingston-fury-beast-black-8gb-3200mhz-ddr4-kf432c16bb-8 (x4)
-  - SSD: https://memoryzone.com.vn/ssd-kingston-a400-sata-3-480gb-sa400s37-480g
+  - SSD Kingston: https://memoryzone.com.vn/ssd-kingston-a400-sata-3-480gb-sa400s37-480g
+  - SSD Zadak: https://tinhocngoisao.com/products/o-cung-ssd-apacer-zadak-twss3-512gb-sata-2-5-zs512gtwss3-1
   - GPU: https://kccshop.vn/vga-sapphire-nitro-radeon-rx-6600-xt-gaming-oc-8gb/
-  - NVME: https://hoanghapc.vn/ssd-sabrent-rocket-500gb-m.2-nvme (x2)
-  - HDD: https://memoryzone.com.vn/hdd-wd-blue-2tb-3-5-inch-sata-iii-256mb-cache-7200rpm-wd20ezbx (x2)
+  - NVME Rocket Sabrent: https://hoanghapc.vn/ssd-sabrent-rocket-500gb-m.2-nvme (x2)
+  - HDD WD Blue: https://memoryzone.com.vn/hdd-wd-blue-2tb-3-5-inch-sata-iii-256mb-cache-7200rpm-wd20ezbx (x2)
   - WiFi PCIe card: Ask https://fado.vn/ to buy [Apple Broadcom BCM943602CDP – 802.11 a/b/g/n/ac with Bluetooth 4.2](https://www.osxwifi.com/product/pc-hackintosh-apple-broadcom-bcm943602cdp-802-11-a-b-g-n-ac-bluetooth-4-2-limited-edition/) for you.
   
 </details>
@@ -100,6 +115,11 @@
 
 # PC Wiring
 
+- Updates (17/07/2024):
+  - USBB: SSD Kingston 480GB for Ubuntu 24.04 LTS.
+  - NVME #1: 500GB storage for Hackintosh.
+  - USB7: SSD Zadak 500GB for Arch Linux.
+
 ![pc-wiring](https://user-images.githubusercontent.com/12621111/229279699-1e5a9796-53c1-4489-9c55-b75ed8690528.jpg)
 
 # BIOS Settings
@@ -110,11 +130,11 @@
   - After updating BIOS, all settings will be set to default.
   - There is search icon on the right corner of MSI BIOS.
 - Enable the following:
-  - Intel VT-d Tech
-  - Intel Virtualization Tech (VT-x)
-  - Re-Size Bar Support
-  - Hyper-Threading
-  - XHCI Hand-off
+  - Intel VT-d Tech.
+  - Intel Virtualization Tech (VT-x).
+  - Re-Size Bar Support.
+  - Hyper-Threading.
+  - XHCI Hand-off.
   - Wake on LAN:
     - This setting may interfere with [Sleep in macOS](https://dortania.github.io/OpenCore-Post-Install/universal/sleep.html).
     - Disable it if you do not want to remotely power on the computer.
@@ -123,24 +143,22 @@
     - This is required for Windows 11.
     - OpenCore suggests to turn it off. However, with it enabled, macOS still boots just fine. 
 - Disable the following:
-  - Fast Boot 
-  - MSI Fast Boot
-  - Secure Boot
+  - Fast Boot.
+  - MSI Fast Boot.
+  - Secure Boot.
     - Note: Windows Security may complain if Secure Boot is turned off.
-  - Thunderbolt
-  - CFG Lock
-- XMP: Profile 2
+  - Thunderbolt.
+  - CFG Lock.
+- XMP: Profile 2.
   - The games will crash when setting XMP to Profile 1.
 - Trusted Model Platform: Enabled.
   - This is for Windows 11.
-- BIOS CSM/UEFI Mode: UEFI
-- Internal SATA Mode: Intel VMD
-  - Intel VMD is for 2 2TB hard disks which are used to store games.
-  - When setting the mode to Intel VMD, macOS will not recognize any drives in Internal SATA Controller.
-- External SATA Mode: AHCI
-- Integrated Graphics Shared Memory: 64M (default)
-- NX Bit (Execute Disable Bit): Yes (read-only)
-- Follow this video to setup RAID0 for 2 2TB HDD drives: https://youtu.be/INjFklUQ7lE
+- BIOS CSM/UEFI Mode: UEFI.
+- Internal SATA Mode: AHCI.
+  - Follow [this tutorial](https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/establish-striped-volume-raid-0) on how to setup RAID0 for 2 2TB HDD drives.
+- External SATA Mode: AHCI.
+- Integrated Graphics Shared Memory: 64M (default).
+- NX Bit (Execute Disable Bit): Yes (read-only).
 
 <details>
   <summary>Where to set?</summary>
@@ -169,9 +187,6 @@
   ## BIOS CSM/UEFI Mode
   ![BIOS_UEFI](https://user-images.githubusercontent.com/12621111/229274984-57cb15c5-e0ef-4098-af9c-5cbed3b65b76.png)
 
-  ## Internal/External SATA Controller
-  ![SATA-MODE](https://user-images.githubusercontent.com/12621111/229275017-f1a37561-845a-4d02-bdb4-a58d189f4027.png)
-
   ## Integrated Graphics Shared Memory
   ![DVMT-PREALLOCATED](https://user-images.githubusercontent.com/12621111/229275046-0ff0ff39-93e2-41c8-a9c6-c5e72d29b45b.png)
 
@@ -189,7 +204,7 @@
 - GPU works.
 - Audio output port (rear panel) works.
 - Audio output port (on TUF GT301 case) works.
-- Audio input port (rear panel) works.
+- Audio input port (rear panel) does not work.
 - Sleep does not work. Root-cause may be related to [power management](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html).
 - [LauncherOption](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html) does not work as expected. It creates a boot entry in BIOS, but does not allow me to delete BOOTx64.efi
 
@@ -208,6 +223,7 @@
 - [gfxutil (macOS tool)](https://github.com/acidanthera/gfxutil/releases): Find route for PCI, Audio...
 
 # Making installer in Windows
+
 - Follow steps here: https://dortania.github.io/OpenCore-Install-Guide/installer-guide/windows-install.html#downloading-macos
 - Notes:
   - Remember to set Python3 environment variables in the Python3 installer.
@@ -240,6 +256,7 @@
 - SMCProcessor.kext **(required)**: Used for monitoring Intel CPU temperature.
 - RadeonSensor.kext (optional): Required to read the GPU temperature and requires Lilu.
 - SMCRadeonGPU.kext (optional): Can be used optionally to export GPU temperature to VirtualSMC for monitoring tools to read and requires VirtualSMC.
+  - **Note:** Repository of RadeonSensor.kext and SMCRadeonGPU.kext is archived. Now, [NootInc](https://github.com/ChefKissInc/SMCRadeonSensors) handles the work (SMCRadeonSensors.kext). However, SMCRadeonSensors.kext does not work and the temperature is not reported correctly. Therefore, in this case, I use RadeonSensor.kext and SMCRadeonGPU.kext.
 - SMCSuperIO.kext **(required)**: Used for monitoring fan speed.
 - WhateverGreen.kext **(required)**: Used for graphics patching, DRM fixes, board ID checks, framebuffer fixes, etc; all GPUs benefit from this kext.
 - AppleALC.kext **(required)**: Used for AppleHDA patching, allowing support for the majority of on-board sound controllers.
@@ -248,6 +265,7 @@
 - USBToolBox.kext and UTBMap.kext **(required)**:
   - https://chriswayg.gitbook.io/opencore-visual-beginners-guide/alternatives/usb-mapping-on-windows
   - https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html
+- NVMeFix.kext **(required)**: A set of patches for the Apple NVMe storage driver, IONVMeFamily. Its goal is to improve compatibility with non-Apple SSDs. It may be used both on Apple and non-Apple computers.
 
 # USBMap
 
@@ -430,17 +448,9 @@
 - Notes:
   - Please do not remove `BOOTx64.efi` from `EFI/BOOT`. Otherwise, OpenCore cannot load boot entries.
   - Press `Space` to show `USB Drive (External)` [(see Rufus)](https://github.com/loc12345pro/Hackintosh-Alder-Lake#making-installer-in-windows).
-  - Because the `Internal SATA Controller` is set to `Intel VMD`, macOS cannot see 2 NVME drives or 2 2TB HDD drives, except for 480GB SSD drive (which is connected to `External SATA Controller`).
   - If stuck at `[EB|#LOG:EXITBS:START]`, make sure to set [Booter->Quirks->SetupVirtualMap](https://github.com/loc12345pro/config.plist/commit/93472875171c660fc3f5822fd1a281b081703260) (https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/extended/kernel-issues.html#stuck-on-eb-log-exitbs-start) in config.plist.
 
 # Post-Install
-
-## Audio
-
-- Just plug in audio speaker to `Line In/Side Speaker Out` port instead of `Line Out/Front Speaker Out` port. Then, set `alcid=2` to [NVRAM->Add->7C436110-AB2A-4BBB-A880-FE41995C9F82->boot-args](https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#testing-your-layout) for testing:
-  ![20230623_audio-ports-configuration](https://github.com/loc12345pro/Hackintosh-Alder-Lake/assets/12621111/19e3faec-51ee-4c35-a48f-45c06a1ad79c)
-- With this setup and configuration, the audio speaker (in `Line In/Side Speaker Out` port), audio HDMI, and audio headphone (in audio port of `GT301 case`) will all work!
-- If you plug the audio speaker to `Line Out/Front Speaker Out` port, all alcid suggested in [Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs), such as: 1, 2, 3, 7, 11, 49, 50, 51, 52, and 69 will not work! I means that the audio speaker will have no sound, and only either the HDMI audio or the audio headphone will work.
 
 ## Fixing slide values
 
@@ -469,7 +479,7 @@
 ### Software setup
 
 - MacOS: Auto!
-- Ubuntu: Auto!
+- Ubuntu: [Just follow method 2: Using efibootmgr (recommended)](https://dortania.github.io/OpenCore-Multiboot/oc/linux.html#method-b-chainloading-a-efi-bootloader-grub2-systemd-boot).
 - Arch Linux:
   - If your system uses [NetworkManager](https://wiki.archlinux.org/title/NetworkManager), follow steps in [2.1. nmcli examples](https://wiki.archlinux.org/title/NetworkManager#nmcli_examples).
   - If there is no network manager in your system, use [wpa_suppliant](https://wiki.archlinux.org/title/wpa_supplicant) to for configuration and connection.
@@ -486,3 +496,47 @@
   - *Note:* The driver is not signed so Windows will raise warnings. If so, just ignore it!
   
 </details>
+
+## Time inconsistency between macOS and Windows
+
+- Press key combination `Windows + S`, search `regedit`, and press `Enter`.
+- Navigate to the key: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation`.
+- Create new `DWORD (32-bit)` value, name it `RealTimeIsUniversal`, and set its value to `1`.
+- Enable time sync and restart the Windows.
+- Reference: https://superuser.com/questions/494432/force-windows-8-to-use-utc-when-dealing-with-bios-clock
+
+## Fix "Could not read \EFI\: Invalid Parameter" when booting to Ubuntu 24.04 LTS
+
+- Follow [Method 2: Using efibootmgr](https://dortania.github.io/OpenCore-Multiboot/oc/linux.html#method-b-chainloading-a-efi-bootloader-grub2-systemd-boot) to fix this issue:
+  ```
+  Could not read `\EFI\`: Invalid Parameter
+  Error: could not find boot options: Invalid Parameter
+  start_image() returned Invalid Parameter
+  OC: Boot failed - Invalid Parameter
+  OCB: SatrtImage failed - Invalid Parameter
+  ```
+
+<details>
+  <summary>Click here to see picture</summary>
+  ![20240720_unable-to-boot-to-ubuntu](https://github.com/user-attachments/assets/5b59d63d-bb55-4c35-84a3-a53a4c1b0a49)
+</details>
+
+## MacOS's useful tools
+
+- Xcode (from Apple Store).
+- Essential developer tools: `xcode-select --install`.
+- Storage benchmark tool: Blackmagic Disk Speed Test (from Apple Store).
+- FileMerge: https://appleinsider.com/inside/xcode/tips/how-to-use-xcodes-filemerge-tool-to-compare-files.
+- Do not turn the Hackintosh to sleep:
+  - Apple logo -> System Settings -> Energy Saver:
+    - Enable Power Nap: Off.
+    - Put hard disks to sleep when possible: Off.
+- Package manager: Homebrew v4.3.9 (https://github.com/Homebrew/brew/releases/tag/4.3.9).
+- Pyenv: `brew install pyenv`.
+- Python 3.2.14: https://github.com/pyenv/pyenv?tab=readme-ov-file#how-it-works.
+- Widget for displaying CPU and GPU utilization: `brew install stats` (https://formulae.brew.sh/cask/stats).
+  - Apple logo -> System Settings -> Login items. Click on '+' sign to add applications. These apps will automatically start at boot.
+- Text editor: `brew install visual-studio-code` (https://formulae.brew.sh/cask/visual-studio-code).
+- CPU and GPU benchmark tool:
+  - Geekbench 6: https://www.geekbench.com (download installer).
+  - Cinebench: `brew install cinebench` (https://formulae.brew.sh/cask/cinebench).
