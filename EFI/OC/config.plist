@@ -258,7 +258,7 @@
 			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
 			<dict>
 				<key>layout-id</key>
-				<data>MQAAAA==</data>
+				<data>BwAAAA==</data>
 				<key>alc-delay</key>
 				<integer>1000</integer>
 				<key>alctcsel</key>
