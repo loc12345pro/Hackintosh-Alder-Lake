@@ -580,3 +580,15 @@
 
   ![20240721_gpu-benchmark-on-macos_before-cpufriend](https://github.com/user-attachments/assets/ee26394f-5980-46ff-a3a5-f179e9d790db)
 </details>
+
+## Disk: Sabrent Rocket 500GB M.2 NVMe PCIe Gen 4.0
+
+| Platform (benchmark tool) | Date | Result |
+| -------- | -------- | ------- |
+| macOS Ventura 13.6.7 (Blackmagic Disk Speed Test) | 21/07/2024 | Write: 2383 MB/s<br>Read: 4000 MB/s |
+
+<details>
+  <summary>Blackmagic Disk Speed Test on macOS Ventura 13.6.7 (21/07/2024)</summary>
+
+  ![20240721_disk-test-speed](https://github.com/user-attachments/assets/ca106858-97b2-4932-9429-593610f54bd9)
+</details>
