@@ -1014,15 +1014,15 @@
 			<key>DmgLoading</key>
 			<string>Signed</string>
 			<key>EnablePassword</key>
-			<false/>
+			<true/>
 			<key>ExposeSensitiveData</key>
 			<integer>6</integer>
 			<key>HaltLevel</key>
 			<integer>2147483648</integer>
 			<key>PasswordHash</key>
-			<data></data>
+			<data>ImQVpKX8QYgM8My+6Kmxe02exnVR8nx4iKA9Fz/Cd8sSwPaWo3uCbFU4wzRlC4q1DjyvepjFqDkSfrjqOVAz8g==</data>
 			<key>PasswordSalt</key>
-			<data></data>
+			<data>poLdimKYoEqNHi9l+6Cz6w==</data>
 			<key>ScanPolicy</key>
 			<integer>0</integer>
 			<key>SecureBootModel</key>
